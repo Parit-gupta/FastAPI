@@ -54,9 +54,10 @@ This command reads the requirements.txt file and installs all the listed package
 into the active virtual environment. This is how others (or you on a different machine) can set up the exact 
 same development environment.
 """
+
 """
 Why use a virtual environment (venv)? :
 A virtual environment is used to create a separate space for your project's 
-dependencies so they don’t conflict with other projects or the system Python.
+dependencies so they don't conflict with other projects or the system Python.
 """
 
