@@ -8,7 +8,9 @@ python -m venv venv
 
 Explanation:
 python -m venv: This invokes the venv module (part of Python's standard library) to create a virtual environment.
-venv: This is the chosen name for your virtual environment directory. You can name it anything you like (e.g., .venv, myenv), but venv is a common convention. This command creates a directory named venv in your current project directory.
+venv: This is the chosen name for your virtual environment directory. You can name it anything you like
+(e.g., .venv, myenv), but venv is a common convention. This command creates a directory named venv in your 
+current project directory.
 Activating the Virtual Environment:
 
 .\venv\Scripts\Activate.ps1
