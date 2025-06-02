@@ -2,9 +2,9 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+# @app.get("/")
+# async def root():
+#     return "Hello World"
 
 # INFO:  Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 # This line shows the URL where your app is being served, in your local machine.
@@ -34,8 +34,9 @@ OpenAPI defines the overall API schema — the endpoints and how the API works.
 Inside OpenAPI, the data schemas (using JSON Schema) describe what data looks like when sent or received.
 """
 
-@app.get("/items/{itemname}")
-async def item(itemname):
-    return {"message":f"this is your items name {itemname}"} # creating first api port
+# @app.get("/items/{itemname}")
+# async def item(itemname):
+#     return {"message":f"this is your items name {itemname}"} # creating first api port
+
 
     
