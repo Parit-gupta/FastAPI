@@ -1,78 +1,32 @@
-# Virtual environment folder
-venv/
-
-# Byte-compiled / optimized / DLL files
+# Ignore Python cache files
 __pycache__/
 *.py[cod]
-*$py.class
 
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
+# Ignore virtual environment folder
+venv/
+env/
 
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# VSCode settings
-.vscode/
-
-# macOS system files
+# Ignore OS files
 .DS_Store
-
-# Windows thumbnail cache files
 Thumbs.db
 
-# Others
-*.env
-.env
+# Ignore log files
+*.log
 
-# JetBrains IDEs (PyCharm, etc)
+# Ignore IDE/editor files
+.vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore compiled files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore node_modules (for JavaScript projects)
+node_modules/
+
+# Ignore environment variable files
+.env
