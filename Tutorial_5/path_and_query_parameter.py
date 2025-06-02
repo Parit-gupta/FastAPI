@@ -25,8 +25,14 @@ app = FastAPI()
 
 # Query
 import requests
-
+# for one query
 res = requests.get("http://127.0.0.1:8000/items/?q=10")  # can see the context using the port and request with help of query writing 
+print("Text",res.text)
+print("JSON",res.json())
+print("Status_Code",res.status_code)
+
+# for multiple query
+res = requests.get("http://127.0.0.1:8000/items/?q=10&skip=101")  
 print("Text",res.text)
 print("JSON",res.json())
 print("Status_Code",res.status_code)
