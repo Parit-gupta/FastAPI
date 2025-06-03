@@ -10,6 +10,14 @@ async def get():
 # def item(q):
 #     return q
 
-@app.get("/items")  
-def item(q:int=0,skip:int=10):     # adding two query parameters
-    return {"q":q,"skip":skip}
+# @app.get("/items")  
+# def item(q:int=0,skip:int=10):     # adding two query parameters
+#     return {"q":q,"skip":skip}
+
+@app.get("/blogs")
+def blogs(limit=10,published :bool=True):    # to rite default value we can do limit=10 but remember the number of variables you have to make all of them default if you try to makw single value default error will come
+    if published:
+        return f"{limit} blogs published"
+    else:
+        return f"{limit} blogs not published"
+# to run this in the site only using link u should write "?limit=variable&published=true/false" as it is a query parameter
