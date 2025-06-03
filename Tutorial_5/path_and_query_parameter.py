@@ -36,3 +36,4 @@ res = requests.get("http://127.0.0.1:8000/items/?q=10&skip=101")   # for writing
 print("Text",res.text)
 print("JSON",res.json())
 print("Status_Code",res.status_code)
+# you can use both path and query parameter together
