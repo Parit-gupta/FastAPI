@@ -1,28 +1,62 @@
-from typing import List
-from fastapi import FastAPI
-from pydantic import BaseModel
+from typing import Annotated
+from fastapi import FastAPI,Query
 
 app = FastAPI()
 
-class Blog(BaseModel):
-    title : str
-    author : str
-    price : int
 
-blog_list : List[Blog]= []
+# @app.get("/items/")
+# async def read_items(q: str | None = None):
+#     results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+#     if q:
+#         results.update({"q": q})
+#     return results
 
-@app.post("/blogs")
-def blogs(blog:Blog):
-    blog_list.append(blog)
-    return f"blog is added successfully and the title is {blog.title}"
 
-@app.get("/blogs")
-def list():
-    return {"list":blog_list}
 
-@app.get("/blogs/total")
-def total():
-    sum=0
-    for i in blog_list:
-        sum = sum + i.price
-    return{"total amount is":sum}
+
+
+# @app.get("/items/")
+# async def read_items(q: Annotated[str | None, Query(max_length=50)] = None):
+#     results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+#     if q:
+#         results.update({"q": q})
+#     return results
+
+
+# @app.get("/items/")
+# async def read_items(
+#     q: Annotated[
+#         str | None, Query(min_length=3, max_length=50, pattern="^fixedquery$")
+#     ] = None,
+# ):
+#     results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+#     if q:
+#         results.update({"q": q})
+#     return results
+
+import random
+from pydantic import AfterValidator
+
+
+data = {
+    "isbn-9781529046137": "The Hitchhiker's Guide to the Galaxy",
+    "imdb-tt0371724": "The Hitchhiker's Guide to the Galaxy",
+    "isbn-9781439512982": "Isaac Asimov: The Complete Stories, Vol. 2",
+}
+
+
+def check_valid_id(id: str):
+    if not id.startswith(("isbn-", "imdb-")):
+        raise ValueError('Invalid ID format, it must start with "isbn-" or "imdb-"')
+    return id
+
+
+@app.get("/items/")
+async def read_items(
+    id: Annotated[str | None, AfterValidator(check_valid_id)] = None,
+):
+    if id:
+        item = data.get(id)
+    else:
+        id, item = random.choice(list(data.items()))
+    return {"id": id, "name": item}
