@@ -33,7 +33,7 @@ def blog(blog:Blog):
     return f"blog is created and the blog name is {blog.title}"
 
 """
-n this FastAPI application, we define an endpoint to create a blog using a POST request. First, the Blog class inherits from BaseModel, 
+In this FastAPI application, we define an endpoint to create a blog using a POST request. First, the Blog class inherits from BaseModel, 
 which is part of Pydantic — a powerful library that FastAPI uses for data validation. This class defines the structure of the expected 
 input with three fields: title (a string), name (a string), and number (an integer). When a client sends a POST request to the /blogs 
 endpoint with a JSON body, FastAPI automatically validates that the input matches the Blog model. If the input is correct, the function 
@@ -41,3 +41,34 @@ blog(blog: Blog) is called, where the parsed input is available as a blog object
 This setup ensures clean, type-safe handling of request data, and FastAPI takes care of error handling, input parsing, and documentation 
 generation automatically.
 """
+
+# A cool small working project till I have learned
+
+from typing import List
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class Blog(BaseModel):
+    title : str
+    author : str
+    price : int
+
+blog_list : List[Blog]= []
+
+@app.post("/blogs")
+def blogs(blog:Blog):
+    blog_list.append(blog)
+    return f"blog is added successfully and the title is {blog.title}"
+
+@app.get("/blogs")
+def list():
+    return {"list":blog_list}
+
+@app.get("/blogs/total")
+def total():
+    sum=0
+    for i in blog_list:
+        sum = sum + i.price
+    return{"total amount is":sum}
