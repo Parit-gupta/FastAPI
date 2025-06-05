@@ -27,7 +27,7 @@ app = FastAPI()
 # async def read_items(
 #     q: Annotated[
 #         str | None, Query(min_length=3, max_length=50, pattern="^fixedquery$")
-#     ] = None,
+#     ] = Any value can be given by default,
 # ):
 #     results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
 #     if q:
